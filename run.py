@@ -11,3 +11,7 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('the_hub')
+
+employees = SHEET.worksheet('employees')
+employee_data = employees.get_all_values()
+print(employee_data)
