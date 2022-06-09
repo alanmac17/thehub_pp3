@@ -15,7 +15,8 @@ SHEET = GSPREAD_CLIENT.open('the_hub')
 
 employees = SHEET.worksheet('employees')
 df = pd.DataFrame(employees.get_all_records())
-print(df.head())
+database = df.set_index('code', inplace=False)
+print(database.head())
 
 
 def request_employee_number():
@@ -26,9 +27,9 @@ def request_employee_number():
     print("Data should be three numbers.")
     print("Example: 123\n")
         
-    employee_code = int(input("Enter here: \n"))
-    results = df.loc[df['code'] == employee_code]
-    print(results)
+    input_code = int(input("Enter here: \n"))
+    emp_record = database.loc[database['code'] == input_code, 0]
+    print(f"You searched for {emp_record}")
 
 request_employee_number()
 
