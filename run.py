@@ -13,27 +13,26 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('the_hub')
 
-employees = SHEET.worksheet('employees')
-df = pd.DataFrame(employees.get_all_records())
-database = df.set_index('code', inplace=False)
-print(database.head())
+database = SHEET.worksheet('employees')
+db = pd.DataFrame(database.get_all_records())
+print(db.head())
 
-
-def request_employee_number():
+def view_profile():
+    id = int(input("Enter Employee ID here: \n"))
+    
     """
     request employee number from user
     """
-    print("Please enter an employee number")
+    print("Please enter an employee ID")
     print("Data should be three numbers.")
     print("Example: 123\n")
-        
-    input_code = int(input("Enter here: \n"))
-    emp_record = database.loc[database['code'] == input_code, 0]
-    print(f"You searched for {emp_record}")
 
-request_employee_number()
+    employee_id = db['code']   
 
-# def create_employee_benefits()
+
+ 
+
+# def get_entitlements()
 # """
 # Work out employee benefits based on role, time
 # """
@@ -64,11 +63,30 @@ request_employee_number()
 # """
 
 
-# def main():
-#     """
-#     Run all program functions
-#     """
-#     get_employee()
+def main():
+    """
+    menu to select a programme function
+    """
+    print("1 to View Employee Profile")
+    print("2 to View Employee Entitlements")
+    print("3 to Send Onboarding Email")
+    print("4 to See Next Actions")
+    print("5 to Quit")
 
-# print("Welcome to the Hub")
-# main()
+    selection = int(input("Select an option: "))
+    if selection == 1:
+        view_profile()
+    elif selection == 2:
+        get_entitlements()
+    elif selection == 3:
+        send_email()
+    elif selection == 4:
+        send_email()
+    elif selection == 5:
+        sys.exit(0)
+    else:
+        print("Please select a number from the options listed")
+        main()
+
+print("Welcome to the Hub")
+main()
