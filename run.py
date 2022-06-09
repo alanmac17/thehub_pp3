@@ -15,11 +15,10 @@ SHEET = GSPREAD_CLIENT.open('the_hub')
 
 database = SHEET.worksheet('employees')
 db = pd.DataFrame(database.get_all_records())
+db.set_index('code', inplace=True)
 print(db.head())
 
 def view_profile():
-    id = int(input("Enter Employee ID here: \n"))
-    
     """
     request employee number from user
     """
@@ -27,8 +26,15 @@ def view_profile():
     print("Data should be three numbers.")
     print("Example: 123\n")
 
-    employee_id = db['code']   
+    Id = int(input("Enter Employee ID here: \n"))
+    
+    employee_id = db.loc[Id]
 
+    print(f"Name: {employee_id.first_name} {employee_id.last_name}")
+    print(f"Role: {employee_id.role}")
+    print(f"Manager: {employee_id.line_manager}")
+    print(f"Email: {employee_id.email_address}")
+    print(f"Status: {employee_id.employee_type}")
 
  
 
