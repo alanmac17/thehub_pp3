@@ -14,43 +14,53 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('the_hub')
 
 employees = SHEET.worksheet('employees')
-employee_data = employees.get_all_values()
+df = pd.DataFrame(employees.get_all_records())
+print(df.head())
 
 
-def request_employee_number()
-"""
-request employee number from user
-"""
+def request_employee_number():
+    """
+    request employee number from user
+    """
+    print("Please enter an employee number")
+    print("Data should be three numbers.")
+    print("Example: 123\n")
+        
+    employee_code = int(input("Enter here: \n"))
+    results = df.loc[df['code'] == employee_code]
+    print(results)
 
-def create_employee_benefits()
-"""
-Work out employee benefits based on role, time
-"""
+request_employee_number()
 
-def employee_next_action()
-"""
-Work out the next appropriate action for employee
-"""
+# def create_employee_benefits()
+# """
+# Work out employee benefits based on role, time
+# """
 
-def get_training_material()
-"""
-linkedin learning API and retrive training course data based on role
-"""
+# def employee_next_action()
+# """
+# Work out the next appropriate action for employee
+# """
 
-def get_latest_social_feeds()
-"""
-Access company social sites and retrive latest posts
-"""
+# def get_training_material()
+# """
+# linkedin learning API and retrive training course data based on role
+# """
 
-def format_onboarding_email()
-"""
-format onboarding email with content from benefits, actions, material, social feeds
-"""
+# def get_latest_social_feeds()
+# """
+# Access company social sites and retrive latest posts
+# """
 
-def send_email()
-"""
-send email to employee and hiring manager
-"""
+# def format_onboarding_email()
+# """
+# format onboarding email with content from benefits, actions, material, social feeds
+# """
+
+# def send_email()
+# """
+# send email to employee and hiring manager
+# """
 
 
 # def main():
