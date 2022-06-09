@@ -18,12 +18,11 @@ db = pd.DataFrame(database.get_all_records())
 db.set_index('code', inplace=True)
 print(db.head())
 
-def view_profile():
+def get_profile():
     """
     request employee number from user
     """
     print("Please enter an employee ID")
-    print("Data should be three numbers.")
     print("Example: 123\n")
 
     Id = int(input("Enter Employee ID here: \n"))
@@ -36,18 +35,23 @@ def view_profile():
     print(f"Email: {employee_id.email_address}")
     print(f"Status: {employee_id.employee_type}")
 
- 
+def get_entitlements():
+    """
+    Work out employee benefits based on role, time
+    """
+    print("Please enter an employee ID")
+    print("Example: 123\n")
 
-# def get_entitlements()
-# """
-# Work out employee benefits based on role, time
-# """
+    Id = int(input("Enter Employee ID here: \n"))
 
+    def sabatical():
+    ##employees are entitled to 1 month sabatical every 4 years worked
+        employee_id = db.loc[Id]
+        
 # def employee_next_action()
 # """
 # Work out the next appropriate action for employee
 # """
-
 # def get_training_material()
 # """
 # linkedin learning API and retrive training course data based on role
@@ -81,7 +85,7 @@ def main():
 
     selection = int(input("Select an option: "))
     if selection == 1:
-        view_profile()
+        get_profile()
     elif selection == 2:
         get_entitlements()
     elif selection == 3:
