@@ -23,7 +23,7 @@ class EmployeeProfile:
 
         employee = db.loc[employee_id]
 
-        self.code = employee.code
+        self.employee_id = employee.code
         self.first_name = employee.first_name
         self.last_name = employee.last_name
         self.email = employee.email_address
@@ -38,5 +38,7 @@ class EmployeeProfile:
         self.six_month_eval_email = employee.six_month_eval_email
         self.pass_probation = employee.pass_probation
 
+        employee = EmployeeProfile(employee_id)
+
         def get_profile(self):
-            print(employee.first_name)
+            print(self.first_name)

@@ -1,4 +1,4 @@
-from .employee import EmployeeProfile
+import employee
 
 def main():
 
@@ -9,18 +9,17 @@ def main():
     print("Example: 123\n")
 
     employee_id = (input("Enter Employee ID here: \n"))
-    employee = EmployeeProfile(employee_id)
-
+        
     print("1 to View Employee Profile")
     print("2 to View Entitlements")
     print("3 to Send Onboarding Email")
     print("4 to See Next Actions")
     print("5 to Quit")
 
-    selection = (input("Select an option: "))
-
+    selection = int((input("Select an option: ")))
+   
     if selection == 1:
-        employee.get_profile(employee_id)
+        get_profile(employee_id)
     elif selection == 2:
         get_entitlements()
     elif selection == 3:
