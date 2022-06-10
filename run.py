@@ -1,13 +1,44 @@
+from .employee import EmployeeProfile
+
+def main():
+
+    """
+    request employee number from user
+    """
+    print("Please enter an employee ID")
+    print("Example: 123\n")
+
+    employee_id = (input("Enter Employee ID here: \n"))
+    employee = EmployeeProfile(employee_id)
+
+    print("1 to View Employee Profile")
+    print("2 to View Entitlements")
+    print("3 to Send Onboarding Email")
+    print("4 to See Next Actions")
+    print("5 to Quit")
+
+    selection = (input("Select an option: "))
+
+    if selection == 1:
+        employee.get_profile(employee_id)
+    elif selection == 2:
+        get_entitlements()
+    elif selection == 3:
+        send_email()
+    elif selection == 4:
+        send_email()
+    elif selection == 5:
+        sys.exit(0)
+    else:
+        print("Please select a number from the options listed")
+        main()
+
+print("Welcome to the Hub")
+main()
+
 
 # def get_profile():
-#     """
-#     request employee number from user
-#     """
-#     print("Please enter an employee ID")
-#     print("Example: 123\n")
-
-#     Id = int(input("Enter Employee ID here: \n"))
-    
+   
 #     employee_id = db.loc[Id]
 
 #     print(f"Name: {employee_id.first_name} {employee_id.last_name}")
@@ -52,32 +83,3 @@
 # """
 # send email to employee and hiring manager
 # """
-
-
-def main():
-    """
-    menu to select a programme function
-    """
-    print("1 to View Employee Profile")
-    print("2 to View Employee Entitlements")
-    print("3 to Send Onboarding Email")
-    print("4 to See Next Actions")
-    print("5 to Quit")
-
-    selection = int(input("Select an option: "))
-    if selection == 1:
-        get_profile()
-    elif selection == 2:
-        get_entitlements()
-    elif selection == 3:
-        send_email()
-    elif selection == 4:
-        send_email()
-    elif selection == 5:
-        sys.exit(0)
-    else:
-        print("Please select a number from the options listed")
-        main()
-
-print("Welcome to the Hub")
-main()

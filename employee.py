@@ -1,5 +1,3 @@
-import run
-
 class EmployeeProfile:
 
     def __init__(self, employee_id: str):
