@@ -18,7 +18,7 @@ db = pd.DataFrame(database.get_all_records())
 db.set_index('code', inplace=True)
 
 database2 = SHEET.worksheet('courses')
-df = pd.DataFrame(database2.get_all_records())
+courselisting = pd.DataFrame(database2.get_all_records())
 
 class EmployeeProfile:
 
@@ -48,12 +48,10 @@ class EmployeeProfile:
 
     def get_course(self):
         course_list = []
-
-        for i in range(len(df.Description)):
-            if df[df['Description'][i].contains(self.role)]:
+        for i in courselisting['Description']:
+            if self.role in i :
                 course_list.append(i)
-
-        print(course_list)
+            print(course_list)
 
 
  ### test get_profile() ###
