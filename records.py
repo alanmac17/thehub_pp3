@@ -2,7 +2,6 @@ import gspread
 from google.oauth2.service_account import Credentials
 import pandas as pd
 
-
 SCOPE = [
             "https://www.googleapis.com/auth/spreadsheets",
             "https://www.googleapis.com/auth/drive.file",
@@ -18,11 +17,14 @@ database = SHEET.worksheet('employees')
 db = pd.DataFrame(database.get_all_records())
 db.set_index('code', inplace=True)
 
+database2 = SHEET.worksheet('courses')
+df = pd.DataFrame(database2.get_all_records())
+
 class EmployeeProfile:
 
     def __init__(self, employee_id: str):
         employee = db.loc[employee_id]
-
+        
         self.first_name = employee.first_name
         self.last_name = employee.last_name
         self.email = employee.email_address
@@ -38,4 +40,26 @@ class EmployeeProfile:
         self.pass_probation = employee.pass_probation
 
     def get_profile(self):
-        print(self.first_name)
+        print(f" \n Retrieving Data from Employee Database...\n")
+        print(f" Name: {self.first_name} {self.last_name}")
+        print(f" Department: {self.department}")
+        print(f" Role: {self.role}")
+        print(f" Reports to: {self.line_manager}")
+
+    def get_course(self):
+        course_list = []
+
+        for i in range(len(df.Description)):
+            if df[df['Description'][i].contains(self.role)]:
+                course_list.append(i)
+
+        print(course_list)
+
+
+ ### test get_profile() ###
+print('\n Testing get profile call')
+EmployeeProfile(102).get_profile()
+
+EmployeeProfile(102).get_course()
+
+
