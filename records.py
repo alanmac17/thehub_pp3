@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import pandas as pd
+import numpy as np
 
 SCOPE = [
             "https://www.googleapis.com/auth/spreadsheets",
@@ -40,24 +41,19 @@ class EmployeeProfile:
         self.pass_probation = employee.pass_probation
 
     def get_profile(self):
-        print(f" \n Retrieving Data from Employee Database...\n")
+        print(" \n Retrieving Data from Employee Database...\n")
         print(f" Name: {self.first_name} {self.last_name}")
         print(f" Department: {self.department}")
         print(f" Role: {self.role}")
         print(f" Reports to: {self.line_manager}")
 
     def get_course(self):
-        course_list = []
-        for i in courselisting['Description']:
-            if self.role in i :
-                course_list.append(i)
-            print(course_list)
+        course_list=courselisting['description'].str.lower().isin([self.role])
+        print(course_list)
 
-
- ### test get_profile() ###
+### test get_profile() ###
 print('\n Testing get profile call')
 EmployeeProfile(102).get_profile()
 
 EmployeeProfile(102).get_course()
-
 
