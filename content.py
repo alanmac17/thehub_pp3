@@ -19,11 +19,12 @@ database2 = SHEET.worksheet('courses')
 courselisting = pd.DataFrame(database2.get_all_records())
 
 def get_course(role):
-    course_list=courselisting['description'].str.lower().isin(role)
-    print(course_list)
+        course_list = courselisting[courselisting['description'].str.contains(role)]
+        print(course_list)
 
 
 ###test get_course with example
-get_course('data analyst')
+# get_course('data analyst')
 
 print(courselisting.head())
+get_course('data analyst')

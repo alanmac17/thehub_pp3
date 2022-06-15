@@ -20,6 +20,8 @@ def main():
     
     if selection == 1:
         records.EmployeeProfile(employee_id).get_profile()
+    elif selection == 4: 
+        content.get_course(employee_id)
 
 print("Welcome to the Hub")
 main()

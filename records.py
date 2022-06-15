@@ -48,6 +48,3 @@ class EmployeeProfile:
 ### test get_profile() ###
 print('\n Testing get profile call')
 EmployeeProfile(102).get_profile()
-
-EmployeeProfile(102).get_course()
-
