@@ -9,12 +9,14 @@ SCOPE = [
             "https://www.googleapis.com/auth/drive"
             ]
 
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('the_hub')
+
 database = SHEET.worksheet('employees')
 db = pd.DataFrame(database.get_all_records())
 db.set_index('code', inplace=True)
-
-database2 = SHEET.worksheet('courses')
-courselisting = pd.DataFrame(database2.get_all_records())
 
 class EmployeeProfile:
 
