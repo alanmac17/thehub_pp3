@@ -61,7 +61,7 @@ class EmployeeProfile:
         print(f" 6 Month Evaluation Email Sent: {self.six_month_eval_email}")
         print(f" Probation Passed: {self.pass_probation}")
 
-### test get_profile() ###
+## test get_profile() ###
 # print('\n Testing get profile call')
 # EmployeeProfile(102).get_profile()
 # EmployeeProfile(102).get_full_profile()
