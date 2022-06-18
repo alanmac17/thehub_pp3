@@ -2,6 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import pandas as pd
 import numpy as np
+import datetime
 
 SCOPE = [
             "https://www.googleapis.com/auth/spreadsheets",
@@ -17,6 +18,9 @@ SHEET = GSPREAD_CLIENT.open('the_hub_pp3')
 database = SHEET.worksheet('employees')
 db = pd.DataFrame(database.get_all_records())
 db.set_index('code', inplace=True)
+
+today = date.today()
+
 
 class EmployeeProfile:
     """
@@ -35,27 +39,26 @@ class EmployeeProfile:
         self.department = employee.department
         self.employee_type = employee.employee_type
         self.onboarded = employee.onboarded
-        self.three_month_checkin_email = employee.three_month_checkin_email
-        self.six_month_eval_email = employee.six_month_eval_email
         self.pass_probation = employee.pass_probation
+        self.last_review_date = employee.last_review_date
+        self.next_review_date = employee.next_review_date
+        self.next_review_type = employee.next_review_type
 
     def get_profile(self):
         """
         provide brief employee details
         """
-
         print(" \n Retrieving Data from Employee Database...\n")
         print(f" Name: {self.first_name} {self.last_name}")
         print(f" Department: {self.department}")
         print(f" Role: {self.role}")
         print(f" Start Date: {self.start_date}")
-        print(f" Onboarding Complete: {self.onboarded}")
+        print(f" Employment Type: {self.employee_type}")
 
     def get_full_profile(self):
         """
         provide full employee details
         """
-
         print(" \n Retrieving Data from Employee Database...\n")
         print(f" Name: {self.first_name} {self.last_name}")
         print(f" Department: {self.department}")
@@ -67,9 +70,16 @@ class EmployeeProfile:
         print(f" Salary: {self.salary}")
         print(f" Employment Type: {self.employee_type}")
         print(f" Onboarding Complete: {self.onboarded}")
-        print(f" 3 Month Checkin Email Sent: {self.three_month_checkin_email}")
-        print(f" 6 Month Evaluation Email Sent: {self.six_month_eval_email}")
         print(f" Probation Passed: {self.pass_probation}")
+        print(f" Last Review Date: {self.last_review_date}")
+        print(f" Next Review Date: {self.next_review_date}")
+        print(f" Next Review Date: {self.next_review_type}")
+    
+    def onboard_new_hires()
+        """
+        Gather all new hires that are due to start next week 
+        """
+        if employee.start_date <= 
 
 
 ## test get_profile() ###
