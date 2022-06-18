@@ -1,8 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import pandas as pd
-import numpy as np
-import records
 
 SCOPE = [
             "https://www.googleapis.com/auth/spreadsheets",
@@ -19,8 +17,7 @@ database2 = SHEET.worksheet('courses')
 courselisting = pd.DataFrame(database2.get_all_records())
 
 def get_course(role):
-        course_list = courselisting[(courselisting['description'].str.contains('role')) | (courselisting['course_title'].str.contains('role'))]
-        return course_list
+        return courselisting[(courselisting['description'].str.contains(role)) | (courselisting['course_title'].str.contains(role))]
 
 # ###test get_course with example
 # get_course('project manager')

@@ -19,7 +19,9 @@ db = pd.DataFrame(database.get_all_records())
 db.set_index('code', inplace=True)
 
 class EmployeeProfile:
-
+    """
+    Employee profile object 
+    """
     def __init__(self, employee_id: str):
         employee = db.loc[employee_id]
         
@@ -38,6 +40,10 @@ class EmployeeProfile:
         self.pass_probation = employee.pass_probation
 
     def get_profile(self):
+        """
+        provide brief employee details
+        """
+
         print(" \n Retrieving Data from Employee Database...\n")
         print(f" Name: {self.first_name} {self.last_name}")
         print(f" Department: {self.department}")
@@ -46,6 +52,10 @@ class EmployeeProfile:
         print(f" Onboarding Complete: {self.onboarded}")
 
     def get_full_profile(self):
+        """
+        provide full employee details
+        """
+
         print(" \n Retrieving Data from Employee Database...\n")
         print(f" Name: {self.first_name} {self.last_name}")
         print(f" Department: {self.department}")
@@ -60,6 +70,7 @@ class EmployeeProfile:
         print(f" 3 Month Checkin Email Sent: {self.three_month_checkin_email}")
         print(f" 6 Month Evaluation Email Sent: {self.six_month_eval_email}")
         print(f" Probation Passed: {self.pass_probation}")
+
 
 ## test get_profile() ###
 # print('\n Testing get profile call')
