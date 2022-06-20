@@ -15,8 +15,8 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('the_hub_pp3')
 
-database = SHEET.worksheet('employees')
-db = pd.DataFrame(database.get_all_records())
+database2 = SHEET.worksheet('employees')
+db = pd.DataFrame(database2.get_all_records())
 db.set_index('code', inplace=True)
 
 
@@ -36,25 +36,17 @@ class EmployeeProfile:
         self.line_manager = employee.line_manager
         self.department = employee.department
         self.employee_type = employee.employee_type
-        self.onboarded = employee.onboarded
-        self.pass_probation = employee.pass_probation
-        self.last_review_date = employee.last_review_date
-        self.next_review_date = employee.next_review_date
-        self.next_review_type = employee.next_review_type
+
 
     def get_profile(self):
         """
-        provide brief employee details
+        provide confirmation of id entered
         """
-        print(" \n Retrieving Data from Employee Database...\n")
+        print("Checking your ID in Employee Database...\n")
         print("...")
         print("...")
-        print("You have selected the following employee: \n")
-        print(f" Name: {self.first_name} {self.last_name}")
-        print(f" Department: {self.department}")
-        print(f" Role: {self.role}")
-        print(f" Start Date: {self.start_date}")
-        print(f" Employment Type: {self.employee_type}")
+        print(f" Thank you {self.first_name} {self.last_name}")
+        print(f"{self.role} in the {self.department} department")
 
     def get_full_profile(self):
         """
@@ -70,12 +62,30 @@ class EmployeeProfile:
         print(f" Department: {self.department}")
         print(f" Salary: {self.salary}")
         print(f" Employment Type: {self.employee_type}")
-        print(f" Onboarding Complete: {self.onboarded}")
-        print(f" Probation Passed: {self.pass_probation}")
-        print(f" Last Review Date: {self.last_review_date}")
-        print(f" Next Review Date: {self.next_review_date}")
-        print(f" Next Review Date: {self.next_review_type}")
-    
+
+
+def add_employee():
+    employees_row = []
+
+    print("Please complete all employee fields: \n")
+    first_name = input("What is the employees first name: \n").lower()
+    last_name = input("What is the employees last name: \n").lower()
+    role = input("What is the employees role ex. Data Analyst: \n").lower()
+    start_date = input("What date will the employee start: \n").lower()
+    salary = input("What is the employees annual salary: \n").lower()
+    line_manager = input("What is the name of the employees line manager: \n").lower()
+    department = input("What department is the employee joining ex Accounts: \n").lower()
+    email_address = input("What is the employees email address: \n").lower()
+    max_id = db.index.max()
+    new_code = int(max_id) + 1
+    employee_type = ("New Hire")
+
+    profile_row = (new_code, first_name, last_name, role, start_date, salary, line_manager, department, email_address, employee_type)
+    employees_row.append(profile_row)
+    print("Thank you for your review, the details have now been entered on the hub")
+    database2.append_row(employees_row)
+
+
 ## test get_profile() ###
 # print('\n Testing get profile call')
 # EmployeeProfile(102).get_profile()

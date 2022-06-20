@@ -16,14 +16,14 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('the_hub_pp3')
 
 database = SHEET.worksheet('reviews')
-db = pd.DataFrame(database.get_all_records())    
+db = pd.DataFrame(database.get_all_records())
 
 def add_review(employee_id):
     review_row = []
 
     print("Which review type would you like to enter?")
     print("'Training', 'Probation', 'Performance'")
-    review_type = input("Select a review type from the following - training, probation, performance: \n").lower()
+    review_type = input("Select a review type from the list above: \n").lower()
     review_date = input("please insert the date of review: \n")
     reviewed_by = input("Please add first and last name of reviewer: \n")
     review_rating = input("Please add rating of 'pass' or 'fail': \n")
@@ -32,19 +32,18 @@ def add_review(employee_id):
     review_data = (employee_id, review_type, review_date, reviewed_by, review_rating, review_notes)
     review_row.append(review_data)
     print("Please confirm the following details entered are correct: \n")
-    print("Thank you for your review, the details have now been entered on the database")
+    print("Thank you for your review, the details have now been entered on the hub \n")
     database.append_row(review_data)
-
 
 def get_id():
     """
-    Request employee id, validate and return profile
+    Request user id, validate and return profile
     """
     while True:
-        print("Please enter an employee ID")
+        print("Please enter your own employee ID")
         print("Ids are 3 digit numbers - Example: 123\n")
             
-        input_id = input("Enter Employee ID here: \n")
+        input_id = input("Enter your Employee ID here: \n")
 
         if validate_id(input_id):
             print(f"The code you entered was {input_id}")   
@@ -78,18 +77,21 @@ def main_menu(employee_id):
     print("...")
     print("...")
     print("Select from the options below:")
-    print("1 to View Full Employee Profile")
+    print("...")
+    print("...")
+    print("1 to View an Employee Profile")
     print("2 to Create a New Employee Profile")
     print("3 to Leave an Employee Review")
     print("4 to Get Recommended Courses")
     print("5 to Quit")
-
+    print("...")
+    print("...")
     selection = int(input("Select an option: "))
     
     if selection == 1:
         records.EmployeeProfile(employee_id).get_full_profile()
     elif selection == 2:
-        add_employee()
+        records.add_employee()
     elif selection == 3:
         add_review(employee_id)
     elif selection == 4: 
@@ -99,8 +101,8 @@ def main():
     """
     Call all functions 
     """
-    print("Welcome to your employee onboarding Portal - The Hub")
-    print("The Hub will provide you with the necessary steps to set your employee up for success.")
+    print("Welcome to the employee onboarding Portal - The Hub")
+    print("The Hub will provide you with the necessary steps to managing your human resources. \n")
     data = get_id()
     main_menu(data)
 
