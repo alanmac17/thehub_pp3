@@ -1,9 +1,6 @@
-
+import pandas as pd
 import gspread
 from google.oauth2.service_account import Credentials
-import pandas as pd
-import numpy as np
-import datetime
 import records
 import content
 
@@ -25,17 +22,19 @@ def add_review(employee_id):
     review_row = []
 
     print("Which review type would you like to enter?")
-    print("1 for training review")
-    print("2 for probation review")
-    print("3 for performance review")
-    review_type = input("Select a review type from 1-3: \n")
+    print("'Training', 'Probation', 'Performance'")
+    review_type = input("Select a review type from the following - training, probation, performance: \n").lower()
     review_date = input("please insert the date of review: \n")
     reviewed_by = input("Please add first and last name of reviewer: \n")
     review_rating = input("Please add rating of 'pass' or 'fail': \n")
     review_notes = input("Please add any other relevant notes: \n")
 
-    review_row.append(review_type, review_date, reviewed_by, review_rating, review_notes)
-    print(review_row)
+    review_data = (employee_id, review_type, review_date, reviewed_by, review_rating, review_notes)
+    review_row.append(review_data)
+    print("Please confirm the following details entered are correct: \n")
+    print("Thank you for your review, the details have now been entered on the database")
+    database.append_row(review_data)
+
 
 def get_id():
     """
@@ -74,10 +73,14 @@ def main_menu(employee_id):
 
     employee_id = int(employee_id)
     records.EmployeeProfile(employee_id).get_profile()
+    print("...")
+    print("...")
+    print("...")
+    print("...")
     print("Select from the options below:")
     print("1 to View Full Employee Profile")
-    print("2 to See Next Action")
-    print("3 to Send Onboarding Email")
+    print("2 to Create a New Employee Profile")
+    print("3 to Leave an Employee Review")
     print("4 to Get Recommended Courses")
     print("5 to Quit")
 
@@ -85,9 +88,9 @@ def main_menu(employee_id):
     
     if selection == 1:
         records.EmployeeProfile(employee_id).get_full_profile()
-    elif selection == 2: 
+    elif selection == 2:
         add_employee()
-    elif selection == 3: 
+    elif selection == 3:
         add_review(employee_id)
     elif selection == 4: 
         content.get_course(records.EmployeeProfile(employee_id).role)

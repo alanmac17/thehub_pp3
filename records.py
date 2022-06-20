@@ -2,7 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import pandas as pd
 import numpy as np
-import datetime
+
 
 SCOPE = [
             "https://www.googleapis.com/auth/spreadsheets",
@@ -18,8 +18,6 @@ SHEET = GSPREAD_CLIENT.open('the_hub_pp3')
 database = SHEET.worksheet('employees')
 db = pd.DataFrame(database.get_all_records())
 db.set_index('code', inplace=True)
-
-today = date.today()
 
 
 class EmployeeProfile:
@@ -49,6 +47,9 @@ class EmployeeProfile:
         provide brief employee details
         """
         print(" \n Retrieving Data from Employee Database...\n")
+        print("...")
+        print("...")
+        print("You have selected the following employee: \n")
         print(f" Name: {self.first_name} {self.last_name}")
         print(f" Department: {self.department}")
         print(f" Role: {self.role}")
