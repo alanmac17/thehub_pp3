@@ -75,13 +75,6 @@ class EmployeeProfile:
         print(f" Next Review Date: {self.next_review_date}")
         print(f" Next Review Date: {self.next_review_type}")
     
-    def onboard_new_hires()
-        """
-        Gather all new hires that are due to start next week 
-        """
-        if employee.start_date <= 
-
-
 ## test get_profile() ###
 # print('\n Testing get profile call')
 # EmployeeProfile(102).get_profile()
