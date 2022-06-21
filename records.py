@@ -22,11 +22,11 @@ db3.set_index('code', inplace=True)
 
 class EmployeeProfile:
     """
-    Employee profile object 
+    Employee profile object
     """
     def __init__(self, employee_id: str):
         employee = db3.loc[employee_id]
-        
+
         self.first_name = employee.first_name
         self.last_name = employee.last_name
         self.email = employee.email_address
@@ -45,7 +45,7 @@ class EmployeeProfile:
         print("Checking the ID in Employee Database...\n")
         print("...")
         print("...")
-        print(f" Thank you, you have selected {self.first_name} {self.last_name}")
+        print(f"You have selected {self.first_name} {self.last_name}")
         print(f"{self.role} in the {self.department} department")
 
     def get_full_profile(self):
@@ -65,7 +65,7 @@ class EmployeeProfile:
 
 
 def add_employee():
-    
+
     """
     Add an employee to the employee spreadsheet in google sheets
     """
@@ -78,12 +78,12 @@ def add_employee():
     role = input("What is the employees role ex. Data Analyst: \n").lower()
     start_date = input("What date will the employee start: \n").lower()
     salary = input("What is the employees annual salary: \n").lower()
-    line_manager = input("What is the name of the employees line manager: \n").lower()
-    department = input("What department is the employee joining ex Accounts: \n").lower()
+    line_manager = input("Who will be the employees line manager: \n").lower()
+    department = input("Which department is the employee joining: \n").lower()
     email_address = input("What is the employees email address: \n").lower()
     employee_type = "New Hire"
 
-    
+
     employees_row = [new_code, first_name, last_name, role, start_date, salary, line_manager, department, email_address, employee_type]
-    print("Thank you for your review, the details have now been entered on the hub")
+    print("Thank you, the details have now been entered on the hub")
     database2.append_row(employees_row)

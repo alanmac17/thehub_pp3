@@ -20,26 +20,28 @@ db = pd.DataFrame(database.get_all_records())
 database2 = SHEET.worksheet('courses')
 courselisting = pd.DataFrame(database2.get_all_records())
 
+
 def get_course(role):
-        """
-        Retrieve courses that are related to the employee role from the courses google spreadsheet
-        """
-        print(f"The follow courses are recommeneded for {role}:")
-        results = courselisting[(courselisting['description'].str.contains(role)) | (courselisting['course_title'].str.contains(role))]
-        top_ten_results = results.iloc[:10,] 
-        print(top_ten_results[["course_id", "description"]])
-        print(...)
-        print(...)
+    """
+    Retrieve courses relevent to the employee role from the courses database
+    """
+    print(f"The follow courses are recommeneded for {role}:")
+    results = courselisting[(courselisting['description'].str.contains(role)) | (courselisting['course_title'].str.contains(role))]
+    top_ten_results = results.iloc[:10, ]
+    print(top_ten_results[["course_id", "description"]])
+    print(...)
+    print(...)
+
 
 def add_review(employee_id):
     """
-    Input a review, passing the employee id and append to the reviews google sheet 
+    Input a review, pass the employee id and append to the reviews google sheet
     """
     review_row = []
 
     print("Which review type would you like to enter?")
     print("'Training', 'Probation', 'Performance'")
-    review_type = input("Select a review type from the list above: \n").lower()
+    review_type = input("Select a review type from the list above: \n")
     review_date = input("please insert the date of review: \n")
     reviewed_by = input("Please add first and last name of reviewer: \n")
     review_rating = input("Please add rating of 'pass' or 'fail': \n")
@@ -49,16 +51,15 @@ def add_review(employee_id):
     review_row.append(review_data)
 
     print("Please confirm the following details entered are correct:\n")
-    print("Thank you for your review, the details have now been entered on the hub\n")
+    print("Thank you for your review, it has now been entered on the hub\n")
     database.append_row(review_data)
+
 
 def next_action(employee_id):
     """
-    Retrieve the next action by passing the employee id and filtering the review sheet 
+    Retrieve the next action by passing the id and querying the review database
     """
-    pass_list = db.loc[db['rating'] == 'pass'and db['code'] == employee_id]
-        
-    print(pass_list)
+    pass_list = db.loc[(db['rating'] == 'pass') & (db['code'] == employee_id)]
 
     result = []
     for value in pass_list["review_type"]:
@@ -68,10 +69,11 @@ def next_action(employee_id):
             result.append("probation review")
         else:
             result.append("training review")
-       
-    print(f"The recommended action for employee {records.EmployeeProfile(employee_id).first_name} is {result}")
-    print(...)
-    print(...)  
+
+    print("Based on the employees history and reviews submitted")
+    print("The recommended action is a:")
+    print(result)
+
 
 def get_id():
     """
@@ -80,31 +82,30 @@ def get_id():
     while True:
         print("Please enter an employee ID")
         print("Ids are 3 digit numbers - Example: 123\n")
-            
+
         input_id = input("Enter the Employee ID here: \n")
 
         if validate_id(input_id):
-            print(f"The code you entered was {input_id}")   
+            print(f"The code you entered was {input_id}")
             break
 
     return input_id
-            
+
 
 def validate_id(values):
     """
     Check employee_id is 3 digits
     """
-    try: 
+    try:
         if len((values)) != 3:
-            raise ValueError(
-                f"An employee ID should be 3 numerical digits, you entered {(values)}"
-            )
-    
+            raise ValueError(f"An ID should be 3 digits, you entered {(values)}")
+
     except ValueError as e:
-        print(f"That doesnt seem right {e}, please type a 3 digit employee id.\n")
+        print(f"That doesnt seem right {e}, please type a 3 digit id \n")
         return False
 
     return True
+
 
 def main_menu(employee_id):
     """
@@ -113,7 +114,7 @@ def main_menu(employee_id):
     while True:
         employee_id = int(employee_id)
         records.EmployeeProfile(employee_id).get_profile()
-       
+
         print("...")
         print("...")
         print("...")
@@ -128,19 +129,19 @@ def main_menu(employee_id):
         print("[5] to Create a New Employee Profile")
         print("...")
         print("...")
-        
+
         selection = int(input("Please enter a number between 1-5: "))
 
         if selection == 1:
             records.EmployeeProfile(employee_id).get_full_profile()
             main()
-        elif selection == 2: 
+        elif selection == 2:
             get_course(records.EmployeeProfile(employee_id).role)
             main()
         elif selection == 3:
             add_review(employee_id)
             main()
-        elif selection == 4: 
+        elif selection == 4:
             next_action(employee_id)
             main()
         elif selection == 5:
@@ -149,17 +150,19 @@ def main_menu(employee_id):
         else:
             print("invalid entry")
             main()
-                    
+
+
 def main():
     """
-    Call all functions 
+    Call all functions
     """
-    print("Welcome to the employee onboarding Portal - The Hub")
-    print("The Hub will provide you with the necessary steps to manage your human resources. \n")
-    print("TYou will have the option of viewing employee details, adding new employees and much more. \n")
-    print("As with any system we hope to continually develop new and useful features. \n")
-    print("Please email get the.hub.pp3@gmail.com with any suggestions or feedback. \n")
+    print("Welcome to The Hub")
+    print("Here you can find all you need to manage your resources.\n")
+    print("Options include viewing, adding and reviewing employees.\n")
+    print("As with any system we hope to develop new and useful features.\n")
+    print("Please email the.hub.pp3@gmail.com with any feedback. \n")
     data = get_id()
     main_menu(data)
+
 
 main()
