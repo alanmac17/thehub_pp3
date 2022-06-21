@@ -86,4 +86,4 @@ def add_employee():
 
     employees_row = [new_code, first_name, last_name, role, start_date, salary, line_manager, department, email_address, employee_type]
     print("Thank you, the details have now been entered on the hub")
-    database2.append_row(employees_row)
+    database3.append_row(employees_row)
