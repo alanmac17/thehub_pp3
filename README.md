@@ -74,7 +74,6 @@ The hub is a place to make business rules and automate emails, content and next 
 ## Process Flow
 ![Process Flow](./assets/process_flow.jpeg)
 
-
 ## Features
 ### Welcome Screen
 ![Validate ID](./assets/welcome_enter_id.jpg)
@@ -105,8 +104,11 @@ The hub is a place to make business rules and automate emails, content and next 
 * Tested the site on PEP8 [PEP8](http://pep8online.com/)
 * Most errors removed except functions that are slightly longer than 80
 
+## Solved Bugs
+* .APIError: { 'code' : 400, 'message ' : 'Invalid values [26] )
+* Resolved by appending to an empty string rather than creating a list and then appending that list to string.
 
-## Known Errors
+## Known Errors/ Bugs
 * Validation on the Main Menu Options
 * Validation on the input fields in the add course and add employee
 * Get next steps presenting two next steps down to the the iteration
@@ -176,3 +178,10 @@ The site is now live and operational
 	- Open IDE "Ternimal" in local machine
   - Type "git clone" followed by URL
   - Press "Enter" to create clone
+
+## Credits
+All code is written by me, I had help from my mentor Jack, Shane and David on Slack, Ed in the tutors
+I utilised the validation rules on love_sandwiches
+The template is code institutes standard python
+Stackoverflow, stackexchange and W3Cschools.com were really helpful
+The deployment section is taken from https://github.com/shahid129/my-sub-my-way thanks Shahid! 
