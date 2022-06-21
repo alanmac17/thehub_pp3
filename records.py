@@ -42,10 +42,10 @@ class EmployeeProfile:
         """
         provide confirmation of id entered
         """
-        print("Checking your ID in Employee Database...\n")
+        print("Checking the ID in Employee Database...\n")
         print("...")
         print("...")
-        print(f" Thank you {self.first_name} {self.last_name}")
+        print(f" Thank you, you have selected {self.first_name} {self.last_name}")
         print(f"{self.role} in the {self.department} department")
 
     def get_full_profile(self):
@@ -66,8 +66,8 @@ class EmployeeProfile:
 
 def add_employee():
     
-
-    print("Please complete all employee fields: \n")
+    print("You have selected option 2 - Add an employee")
+    print("Please complete all detail required for an employee : \n")
     new_code = "New"
     first_name = input("What is the employees first name: \n").lower()
     last_name = input("What is the employees last name: \n").lower()

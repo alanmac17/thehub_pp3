@@ -3,7 +3,6 @@ import gspread
 from google.oauth2.service_account import Credentials
 import records
 import content
-import send_email
 
 SCOPE = [
             "https://www.googleapis.com/auth/spreadsheets",
@@ -42,10 +41,10 @@ def get_id():
     Request user id, validate and return profile
     """
     while True:
-        print("Please enter your own employee ID")
+        print("Please enter your an employee ID")
         print("Ids are 3 digit numbers - Example: 123\n")
             
-        input_id = input("Enter your Employee ID here: \n")
+        input_id = input("Enter the Employee ID here: \n")
 
         if validate_id(input_id):
             print(f"The code you entered was {input_id}")   
@@ -72,35 +71,42 @@ def validate_id(values):
 
 def main_menu(employee_id):
 
-    employee_id = int(employee_id)
-    records.EmployeeProfile(employee_id).get_profile()
-    print("...")
-    print("...")
-    print("...")
-    print("...")
-    print("Select from the options below:")
-    print("...")
-    print("...")
-    print("1 to View an Employee Profile")
-    print("2 to Create a New Employee Profile")
-    print("3 to Leave an Employee Review")
-    print("4 to Get Recommended Courses")
-    print("5 to Send an Email")
-    print("...")
-    print("...")
-    selection = int(input("Select an option: "))
-    
-    if selection == 1:
-        records.EmployeeProfile(employee_id).get_full_profile()
-    elif selection == 2:
-        records.add_employee()
-    elif selection == 3:
-        add_review(employee_id)
-    elif selection == 4: 
-        content.get_course(records.EmployeeProfile(employee_id).role)
-    elif selection == 5: 
-        send_email.email_sender()
+    while True:
+        employee_id = int(employee_id)
+        records.EmployeeProfile(employee_id).get_profile()
+       
+        print("...")
+        print("...")
+        print("...")
+        print("...")
+        print("Select from the options below:")
+        print("...")
+        print("...")
+        print("[1] to View the Employees Profile")
+        print("[2] to Create a New Employee Profile")
+        print("[3] to Leave an Employee Review")
+        print("[4] to Get Recommended Courses")
+        print("...")
+        print("...")
+        
+        selection = int(input("Please enter a number between 1-4: "))
 
+        if selection == 1:
+            records.EmployeeProfile(employee_id).get_full_profile()
+            main()
+        elif selection == 2:
+            records.add_employee()
+            main()
+        elif selection == 3:
+            add_review(employee_id)
+            main()
+        elif selection == 4: 
+            content.get_course(records.EmployeeProfile(employee_id).role)
+            main()
+        else:
+            print("invalid entry")
+            main()
+                    
 def main():
     """
     Call all functions 
