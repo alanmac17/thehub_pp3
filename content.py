@@ -17,9 +17,10 @@ database2 = SHEET.worksheet('courses')
 courselisting = pd.DataFrame(database2.get_all_records())
 
 def get_course(role):
+        print(f"The follow courses are recommeneded for {role}:")
         results = courselisting[(courselisting['description'].str.contains(role)) | (courselisting['course_title'].str.contains(role))]
-        print(results['course_id'].count())
-        print(results[["course_id", "description"]])
+        top_five_results = results.iloc[:5,] 
+        print(top_five_results[["course_id", "description"]])
 
 # ###test get_course with example
 get_course('project manager')
