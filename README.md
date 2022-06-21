@@ -42,15 +42,44 @@ The hub is a place to make business rules and automate emails, content and next 
 	3. * The new stater clicks on the links to view more information
 	4. * The links open to the company and training sites.
 
+## Functional Requirements
+* Retrieve data about employees
+* Create an employee profile
+* Create and log an employee review
+* Search relevant training content for the employee's role
+
+## Future Functionality
+* Query the database and create business rules to notify managers and employees of when a review is due. 
+* For example if the employee type is a 'new hire' and a training review is completed with a status of pass.
+* Then update the employee type to 'probation' and next review date to 3 months from the last review date
+
+* Format relevant onboarding content for the new starter in to an email
+* Utilise API connecting to linkedin learning and populate the email with curated courses
+* Send an email to the new starter and their manager
+
+## Functions
+* Start (main)
+* Request employee id (get_id)
+* Create an employee profile (get_profile)
+* Confirm id is valid (validate_id)
+* Main Menu (main_menu)
+* Get the next recommended action for an employee (next_action)
+* Retrieve Role Training Material (get_course)
+* Add an employee review (add_review)
+* Employee Profile Class (EmployeeProfile)
+* Get full profile details (get_full_profile)
+* Provide short employee summary (get_profile)
+* Create an employee profile (add_employee)
+
 ## Features
-    ### GUI
+### Welcome Screen
     * Please enter employee No
     * Validate Employee Number
     * Present Employee Summary
     * Open Main Menu
 
-    ### View Employee Profile
-    ### Get Recommended Courses
-    ### Leave an employee Review
-    ### Get Recommended Next Action
-    ### Create a new Employee Profile
+### View Employee Profile
+### Get Recommended Courses
+### Leave an employee Review
+### Get Recommended Next Action
+### Create a new Employee Profile
