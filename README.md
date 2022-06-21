@@ -72,13 +72,18 @@ The hub is a place to make business rules and automate emails, content and next 
 * Create an employee profile (add_employee)
 
 ## Process Flow
+![Process Flow](./assets/process_flow.jpeg)
+
 
 ## Features
 ### Welcome Screen
-    * Please enter employee No
-    * Validate Employee Number
-    * Present Employee Summary
-    * Open Main Menu
+![Validate ID](./assets/welcome_enter_id.jpg)
+### Please enter employee No
+### Validate Employee Number
+![Validate ID](./assets/employee_id_validation.jpg)
+### Present Employee Summary
+![Validated ID](./assets/Id_confirmation.jpg)
+### Open Main Menu
 
 ### View Employee Profile
 ![Employee Profile](./assets/get_profile.jpg)
@@ -86,25 +91,43 @@ The hub is a place to make business rules and automate emails, content and next 
 ![Get Course](./assets/get_courses.jpg)
 ### Leave an employee Review
 ![Add Review](./assets/add_review.jpg)
-![Update Sheet](./assets/update_review_sheets.jpg)
+![Update Review Sheet](./assets/update_reviews_sheets.jpg)
 ### Get Recommended Next Action
 ![Next Action](./assets/get_next_action.jpg)
 ### Create a new Employee Profile
-![New Profile](./assets/get_next_action.jpg)
+![New Profile](./assets/add_employee.jpg)
+![Update Employee Sheet](./assets/google_sheet_update_employee.jpg)
+
+## Testing
+* All functions and flows above will submit data and produce a confirmation to the user
+* The user can follow the journey from beginning to end for each of the functions and user stories
+* See known errors below
+* Tested the site on PEP8 [PEP8](http://pep8online.com/)
+* Most errors removed except functions that are slightly longer than 80
+
+
+## Known Errors
+* Validation on the Main Menu Options
+* Validation on the input fields in the add course and add employee
+* Get next steps presenting two next steps down to the the iteration
+* Space and formating when the main menu is called again after menu option completes
+* The training courses and next steps were supposed to populate a formatted email but I have issues with server time outs and could not send from the terminal.
 
 ## Technologies In Use
-    - ### [Github](https://github.com/)
-    * Project repository
-    - ### [Gitpod](https://gitpod.io/)
-    * IDE for coding and testing
-    - ### [Heroku](heroku.com)
-    * Deployment site
-    - ### [Lucid](https://lucid.app/)
-    * Creating process flow
-    - ### [PEP8](http://pep8online.com/)
-    * Online Testing
-    - ### [Pandas] 
-    * Creating dataframes for analysis
+### [Github](https://github.com/)
+* Project repository
+### [Gitpod](https://gitpod.io/)
+* IDE for coding and testing
+### [Heroku](heroku.com)
+* Deployment site
+### [Lucid](https://lucid.app/)
+* Creating process flow
+### [PEP8](http://pep8online.com/)
+* Online Testing
+### [Pandas] 
+* Creating dataframes for analysis
+### [GoogleSheets] ### [GoogleAPI]
+![gspread](./assets/gspread.jpg)
 
 ## Deployment
 ### GitHub 
