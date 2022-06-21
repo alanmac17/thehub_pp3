@@ -81,16 +81,75 @@ The hub is a place to make business rules and automate emails, content and next 
     * Open Main Menu
 
 ### View Employee Profile
+![Employee Profile](./assets/get_profile.jpg)
 ### Get Recommended Courses
+![Get Course](./assets/get_courses.jpg)
 ### Leave an employee Review
+![Add Review](./assets/add_review.jpg)
+![Update Sheet](./assets/update_review_sheets.jpg)
 ### Get Recommended Next Action
+![Next Action](./assets/get_next_action.jpg)
 ### Create a new Employee Profile
+![New Profile](./assets/get_next_action.jpg)
 
 ## Technologies In Use
     - ### [Github](https://github.com/)
+    * Project repository
     - ### [Gitpod](https://gitpod.io/)
+    * IDE for coding and testing
     - ### [Heroku](heroku.com)
+    * Deployment site
     - ### [Lucid](https://lucid.app/)
+    * Creating process flow
     - ### [PEP8](http://pep8online.com/)
+    * Online Testing
     - ### [Pandas] 
+    * Creating dataframes for analysis
 
+## Deployment
+### GitHub 
+  - [Login](https://github.com/) to GitHub
+  - Click "Repository" and select "New"
+  - Give the repository a name and description and then click "Create repository"
+  - Click "Gitpod" to start editing
+  - In the terminal enter "python3 run.py" to run your code
+
+### Heroku
+* The project was deployed using [Heroku](https://www.heroku.com)
+*  Navigate to your [heroku dashboard](https://dashboard.heroku.com/apps)
+- Click "New" and select "Create new app".  
+- Input a meaningful name for your app and choose the region best suited to
+  your location.  
+- Select "Settings" from the tabs.  
+  - Click "Reveal Config Vars".  
+  - Input `PORT` and `8000` as one config var and click add.  
+  - Input `CREDS` and the content of your Google Sheet API creds file as another
+    config var and click add.  
+  - Click "Add buildpack".  
+  - Add "nodejs" and "python" from the list or search if necessary, remember to
+    click save.  
+  - Python must be the first buildpack. They can be dragged into the correct
+    position if needed.  
+- Select "Deploy" from the tabs.  
+  - Select "GitHub - Connect to GitHub" from deployment methods.  
+  - Click "Connect to GitHub" in the created section.  
+  - Search for the GitHub repository by name.  
+  - Click to connect to the relevant repo.  
+  - Either click `Enable Automatic Deploys` for automatic deploys or `Deploy
+    Branch` to deploy manually. Manually deployed branches will need
+    re-deploying each time the repo is updated.  
+  - Click `View` to view the deployed site.  
+- The live site can also be accessed from your repo in GitHub from the
+  environments section of the repo.
+  - Click the link to view deployments history.  
+  - Click `View deployment`. This page also shows all the deployment history.  
+The site is now live and operational
+
+### Make a clone
+- [Login](https://github.com/) to GitHub
+  - Click "Repository" and select "project"
+	- Click the "Code" dropdown menu.
+  - Click "Clone with HTTPS" and copy the link
+	- Open IDE "Ternimal" in local machine
+  - Type "git clone" followed by URL
+  - Press "Enter" to create clone
