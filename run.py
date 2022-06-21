@@ -2,7 +2,6 @@ import pandas as pd
 import gspread
 from google.oauth2.service_account import Credentials
 import records
-import content
 
 SCOPE = [
             "https://www.googleapis.com/auth/spreadsheets",
