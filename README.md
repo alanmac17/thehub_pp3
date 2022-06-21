@@ -71,6 +71,8 @@ The hub is a place to make business rules and automate emails, content and next 
 * Provide short employee summary (get_profile)
 * Create an employee profile (add_employee)
 
+## Process Flow
+
 ## Features
 ### Welcome Screen
     * Please enter employee No
@@ -83,3 +85,12 @@ The hub is a place to make business rules and automate emails, content and next 
 ### Leave an employee Review
 ### Get Recommended Next Action
 ### Create a new Employee Profile
+
+## Technologies In Use
+    - ### [Github](https://github.com/)
+    - ### [Gitpod](https://gitpod.io/)
+    - ### [Heroku](heroku.com)
+    - ### [Lucid](https://lucid.app/)
+    - ### [PEP8](http://pep8online.com/)
+    - ### [Pandas] 
+
