@@ -36,12 +36,30 @@ def add_review(employee_id):
     print("Thank you for your review, the details have now been entered on the hub\n")
     database.append_row(review_data)
 
+def next_action(employee_id):
+    pass_list = db.loc[db['rating'] == 'pass'and db['code'] == employee_id]
+        
+    print(pass_list)
+
+    result = []
+    for value in pass_list["review_type"]:
+        if value == 'probation':
+            result.append("performance review")
+        elif value == 'training':
+            result.append("probation review")
+        else:
+            result.append("training review")
+       
+    print(f"The recommended action for employee {records.EmployeeProfile(employee_id).first_name} is {result}")
+    print(....)
+    print(....)  
+
 def get_id():
     """
     Request user id, validate and return profile
     """
     while True:
-        print("Please enter your an employee ID")
+        print("Please enter an employee ID")
         print("Ids are 3 digit numbers - Example: 123\n")
             
         input_id = input("Enter the Employee ID here: \n")
@@ -83,9 +101,10 @@ def main_menu(employee_id):
         print("...")
         print("...")
         print("[1] to View the Employees Profile")
-        print("[2] to Create a New Employee Profile")
+        print("[2] to Get Recommended Courses")
         print("[3] to Leave an Employee Review")
-        print("[4] to Get Recommended Courses")
+        print("[4] to Get Recommended Next Action")
+        print("[5] to Create a New Employee Profile")
         print("...")
         print("...")
         
@@ -94,14 +113,17 @@ def main_menu(employee_id):
         if selection == 1:
             records.EmployeeProfile(employee_id).get_full_profile()
             main()
-        elif selection == 2:
+        elif selection == 5:
             records.add_employee()
             main()
         elif selection == 3:
             add_review(employee_id)
             main()
-        elif selection == 4: 
+        elif selection == 2: 
             content.get_course(records.EmployeeProfile(employee_id).role)
+            main()
+        elif selection == 4: 
+            next_action(employee_id)
             main()
         else:
             print("invalid entry")

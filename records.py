@@ -66,6 +66,10 @@ class EmployeeProfile:
 
 def add_employee():
     
+    """
+    Add an employee to the employee spreadsheet in google sheets
+    """
+
     print("You have selected option 2 - Add an employee")
     print("Please complete all detail required for an employee : \n")
     new_code = "New"
@@ -83,9 +87,3 @@ def add_employee():
     employees_row = [new_code, first_name, last_name, role, start_date, salary, line_manager, department, email_address, employee_type]
     print("Thank you for your review, the details have now been entered on the hub")
     database2.append_row(employees_row)
-
-
-## test get_profile() ###
-# print('\n Testing get profile call')
-# EmployeeProfile(102).get_profile()
-# EmployeeProfile(102).get_full_profile()
