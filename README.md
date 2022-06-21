@@ -81,10 +81,16 @@ The hub is a place to make business rules and automate emails, content and next 
     * Open Main Menu
 
 ### View Employee Profile
+![Employee Profile](./assets/get_profile.jpg)
 ### Get Recommended Courses
+![Get Course](./assets/get_courses.jpg)
 ### Leave an employee Review
+![Add Review](./assets/add_review.jpg)
+![Update Sheet](./assets/update_review_sheets.jpg)
 ### Get Recommended Next Action
+![Next Action](./assets/get_next_action.jpg)
 ### Create a new Employee Profile
+![New Profile](./assets/get_next_action.jpg)
 
 ## Technologies In Use
     - ### [Github](https://github.com/)
