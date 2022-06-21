@@ -129,22 +129,22 @@ def main_menu(employee_id):
         print("...")
         print("...")
         
-        selection = int(input("Please enter a number between 1-4: "))
+        selection = int(input("Please enter a number between 1-5: "))
 
         if selection == 1:
             records.EmployeeProfile(employee_id).get_full_profile()
             main()
-        elif selection == 5:
-            records.add_employee()
+        elif selection == 2: 
+            get_course(records.EmployeeProfile(employee_id).role)
             main()
         elif selection == 3:
             add_review(employee_id)
             main()
-        elif selection == 2: 
-            content.get_course(records.EmployeeProfile(employee_id).role)
-            main()
         elif selection == 4: 
             next_action(employee_id)
+            main()
+        elif selection == 5:
+            records.add_employee()
             main()
         else:
             print("invalid entry")
@@ -155,7 +155,10 @@ def main():
     Call all functions 
     """
     print("Welcome to the employee onboarding Portal - The Hub")
-    print("The Hub will provide you with the necessary steps to managing your human resources. \n")
+    print("The Hub will provide you with the necessary steps to manage your human resources. \n")
+    print("TYou will have the option of viewing employee details, adding new employees and much more. \n")
+    print("As with any system we hope to continually develop new and useful features. \n")
+    print("Please email get the.hub.pp3@gmail.com with any suggestions or feedback. \n")
     data = get_id()
     main_menu(data)
 
