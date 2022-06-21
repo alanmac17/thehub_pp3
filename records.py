@@ -65,7 +65,7 @@ class EmployeeProfile:
 
 
 def add_employee():
-    employees_row = []
+    
 
     print("Please complete all employee fields: \n")
     new_code = "New"
@@ -79,8 +79,8 @@ def add_employee():
     email_address = input("What is the employees email address: \n").lower()
     employee_type = "New Hire"
 
-    profile_row = (new_code, first_name, last_name, role, start_date, salary, line_manager, department, email_address, employee_type)
-    employees_row.append(profile_row)
+    
+    employees_row = [new_code, first_name, last_name, role, start_date, salary, line_manager, department, email_address, employee_type]
     print("Thank you for your review, the details have now been entered on the hub")
     database2.append_row(employees_row)
 
