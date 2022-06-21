@@ -18,7 +18,24 @@ SHEET = GSPREAD_CLIENT.open('the_hub_pp3')
 database = SHEET.worksheet('reviews')
 db = pd.DataFrame(database.get_all_records())
 
+database2 = SHEET.worksheet('courses')
+courselisting = pd.DataFrame(database2.get_all_records())
+
+def get_course(role):
+        """
+        Retrieve courses that are related to the employee role from the courses google spreadsheet
+        """
+        print(f"The follow courses are recommeneded for {role}:")
+        results = courselisting[(courselisting['description'].str.contains(role)) | (courselisting['course_title'].str.contains(role))]
+        top_ten_results = results.iloc[:10,] 
+        print(top_ten_results[["course_id", "description"]])
+        print(...)
+        print(...)
+
 def add_review(employee_id):
+    """
+    Input a review, passing the employee id and append to the reviews google sheet 
+    """
     review_row = []
 
     print("Which review type would you like to enter?")
@@ -37,6 +54,9 @@ def add_review(employee_id):
     database.append_row(review_data)
 
 def next_action(employee_id):
+    """
+    Retrieve the next action by passing the employee id and filtering the review sheet 
+    """
     pass_list = db.loc[db['rating'] == 'pass'and db['code'] == employee_id]
         
     print(pass_list)
@@ -51,8 +71,8 @@ def next_action(employee_id):
             result.append("training review")
        
     print(f"The recommended action for employee {records.EmployeeProfile(employee_id).first_name} is {result}")
-    print(....)
-    print(....)  
+    print(...)
+    print(...)  
 
 def get_id():
     """
@@ -88,7 +108,9 @@ def validate_id(values):
     return True
 
 def main_menu(employee_id):
-
+    """
+    Menu options for the user to select from
+    """
     while True:
         employee_id = int(employee_id)
         records.EmployeeProfile(employee_id).get_profile()

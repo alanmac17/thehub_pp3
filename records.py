@@ -15,9 +15,9 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('the_hub_pp3')
 
-database2 = SHEET.worksheet('employees')
-db = pd.DataFrame(database2.get_all_records())
-db.set_index('code', inplace=True)
+database3 = SHEET.worksheet('employees')
+db3 = pd.DataFrame(database3.get_all_records())
+db3.set_index('code', inplace=True)
 
 
 class EmployeeProfile:
@@ -25,7 +25,7 @@ class EmployeeProfile:
     Employee profile object 
     """
     def __init__(self, employee_id: str):
-        employee = db.loc[employee_id]
+        employee = db3.loc[employee_id]
         
         self.first_name = employee.first_name
         self.last_name = employee.last_name
