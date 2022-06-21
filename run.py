@@ -98,7 +98,7 @@ def validate_id(values):
     """
     try:
         if len((values)) != 3:
-            raise ValueError(f"An ID should be 3 digits, you entered {(values)}")
+            raise ValueError(f"An ID should be 3 digits, you entered {values}")
 
     except ValueError as e:
         print(f"That doesnt seem right {e}, please type a 3 digit id \n")
