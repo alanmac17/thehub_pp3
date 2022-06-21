@@ -68,6 +68,7 @@ def add_employee():
     employees_row = []
 
     print("Please complete all employee fields: \n")
+    new_code = "New"
     first_name = input("What is the employees first name: \n").lower()
     last_name = input("What is the employees last name: \n").lower()
     role = input("What is the employees role ex. Data Analyst: \n").lower()
@@ -76,9 +77,7 @@ def add_employee():
     line_manager = input("What is the name of the employees line manager: \n").lower()
     department = input("What department is the employee joining ex Accounts: \n").lower()
     email_address = input("What is the employees email address: \n").lower()
-    max_id = db.index.max()
-    new_code = int(max_id) + 1
-    employee_type = ("New Hire")
+    employee_type = "New Hire"
 
     profile_row = (new_code, first_name, last_name, role, start_date, salary, line_manager, department, email_address, employee_type)
     employees_row.append(profile_row)

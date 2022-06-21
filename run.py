@@ -3,6 +3,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import records
 import content
+import send_email
 
 SCOPE = [
             "https://www.googleapis.com/auth/spreadsheets",
@@ -31,8 +32,9 @@ def add_review(employee_id):
 
     review_data = (employee_id, review_type, review_date, reviewed_by, review_rating, review_notes)
     review_row.append(review_data)
-    print("Please confirm the following details entered are correct: \n")
-    print("Thank you for your review, the details have now been entered on the hub \n")
+
+    print("Please confirm the following details entered are correct:\n")
+    print("Thank you for your review, the details have now been entered on the hub\n")
     database.append_row(review_data)
 
 def get_id():
@@ -83,7 +85,7 @@ def main_menu(employee_id):
     print("2 to Create a New Employee Profile")
     print("3 to Leave an Employee Review")
     print("4 to Get Recommended Courses")
-    print("5 to Quit")
+    print("5 to Send an Email")
     print("...")
     print("...")
     selection = int(input("Select an option: "))
@@ -96,6 +98,8 @@ def main_menu(employee_id):
         add_review(employee_id)
     elif selection == 4: 
         content.get_course(records.EmployeeProfile(employee_id).role)
+    elif selection == 5: 
+        send_email.email_sender()
 
 def main():
     """
